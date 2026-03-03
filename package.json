@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "ts-node planifyLab.ts "
+    "start": "ts-node src/planifyLab.ts "
   },
   "repository": {
     "type": "git",
