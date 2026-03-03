@@ -1,0 +1,60 @@
+{
+  "samples": [
+    {
+      "id": "S001",
+      "type": "BLOOD",
+      "priority": "URGENT",
+      "analysisTime": 30,
+      "arrivalTime": "09:00",
+      "patientId": "P001"
+    },
+    {
+      "id": "S002",
+      "type": "TISSUE",
+      "priority": "URGENT",
+      "analysisTime": 45,
+      "arrivalTime": "01:00",
+      "patientId": "P133"
+
+    },
+    {
+      "id": "S003",
+      "type": "URINE",
+      "priority": "STAT",
+      "analysisTime": 15,
+      "arrivalTime": "09:00",
+      "patientId": "P138"
+
+    }
+  ],
+  "technicians": [
+    {
+      "id": "T001",
+      "name": "Alice Martin",
+      "speciality": "BLOOD",
+      "startTime": "08:00",
+      "endTime": "17:00"
+    },
+    {
+      "id": "T002",
+      "name": "Oliver Dupont",
+      "speciality": "GENERAL",
+      "startTime": "05:00",
+      "endTime": "15:00"
+    }
+  ],
+  "equipment": [
+    {
+      "id": "E001",
+      "name": "Analyseur Sang A",
+      "type": "BLOOD",
+      "available": true
+    },
+    {
+      "id": "E002",
+      "name": "Analyseur Tissus A",
+      "type": "TISSUE",
+      "available": true
+    }
+  ]
+}
