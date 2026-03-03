@@ -1,5 +1,3 @@
-import {prioritySample, TypeSample} from "./models.enums";
-
 export interface Sample {
     "id": string,
     "type": string,

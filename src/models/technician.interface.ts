@@ -1,5 +1,3 @@
-import {Speciality} from "./models.enums";
-
 export interface Technician {
 
     "id": string,
