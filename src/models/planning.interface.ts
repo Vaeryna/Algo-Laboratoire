@@ -1,6 +1,6 @@
 import {prioritySample} from "./models.enums";
 
-export class Schedule {
+export interface Schedule {
     "sampleId": string;
     "technicianId": string;
     "equipmentId": string;
@@ -9,7 +9,7 @@ export class Schedule {
     "priority": prioritySample;
 }
 
-export class Metrics {
+export interface Metrics {
     "totalTime": number; //durée totale en minutes
     "efficiency": number; // en pourcentage: (somme durées analyse / temps total plannig *100)
     "conflict": number //nombre de conflits détectés
