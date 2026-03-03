@@ -1,12 +1,10 @@
-import {prioritySample} from "./models.enums";
-
 export interface Schedule {
     "sampleId": string;
     "technicianId": string;
     "equipmentId": string;
     "startTime": string; // ex: '09:30"
     "endTime": string;
-    "priority": prioritySample;
+    "priority": string;
 }
 
 export interface Metrics {
