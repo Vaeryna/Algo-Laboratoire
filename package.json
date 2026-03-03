@@ -1,0 +1,23 @@
+{
+  "name": "algo-laboratoire",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "ts-node planifyLab.ts "
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Vaeryna/Algo-Laboratoire.git"
+  },
+  "private": true,
+  "dependencies": {
+    "typescript": "^5.9.3",
+    "@types/jest": "^29.5.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.5.0",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.0"
+  }
+}
