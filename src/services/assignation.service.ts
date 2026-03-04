@@ -5,16 +5,21 @@ import {Equipment} from "../models/equipment.interface";
 import {transformToMinutes} from "../utils/transformToMinutes.utils";
 
 
-function createProgram(technician: Technician): Record<string, boolean> {
-    const startTime: number = transformToMinutes(technician.startTime)
-    const endTime: number = transformToMinutes(technician.endTime)
+function createProgram(userPlanning?: Technician | Equipment): Record<number, string> {
+    let startTime = transformToMinutes("00:00")
+    let endTime = transformToMinutes("23:59")
 
-    let program: Record<number, boolean> = {}
+    if (userPlanning) {
+        if ("startTime" in userPlanning && "endTime" in userPlanning) {
+            startTime = transformToMinutes(userPlanning.startTime)
+            endTime = transformToMinutes(userPlanning.endTime)
+        }
+    }
+    let program: Record<number, string> = {}
 
     for (let i = startTime; i < endTime; i += 15) {
-        program[i] = true
+        program[i] = "ok"
     }
-
     return program
 }
 
