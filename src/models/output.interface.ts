@@ -1,5 +1,5 @@
 export interface Output {
-    "schedule": [
+    "schedule":
         {
             "sampleId": string,
             "technicianId": string,
@@ -7,8 +7,7 @@ export interface Output {
             "startTime": string
             "endTime": string,
             "priority": string
-        }
-    ],
+        }[],
     "metrics": {
         "totalTime": number,      // Une seule analyse de 30min
         "efficiency": number,  // Ressources utilisées à 100%
