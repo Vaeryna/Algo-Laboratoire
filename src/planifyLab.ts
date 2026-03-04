@@ -12,7 +12,8 @@ const input = loadInput(INPUT_PATH)
 
 
 function planifyLab() {
-    createPlanning(input)
+    console.log(createPlanning(input))
+
 }
 
 
