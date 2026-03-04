@@ -12,5 +12,5 @@ export interface Output {
         "totalTime": number,
         "efficiency": number,
         "conflicts": number
-    }
+    }[]
 }
