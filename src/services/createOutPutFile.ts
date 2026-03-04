@@ -1,7 +1,8 @@
 import {Input} from "../models/input.models";
 import {Sample} from "../models/sample.interface";
-import {Metrics} from "../models/planning.interface";
 import {assignation} from "./assignation.service";
+import {Output} from "../models/output.interface";
+import {transformToMinutes} from "../utils/transformTime.utils";
 
 
 function totalTimeAnalysisCalc(input: Input): number {
@@ -25,10 +26,19 @@ function totalTimeCalc(output: Output): number {
     return lastEnd - firstStart;
 }
 
-    assignation(input)
+export function createPlanning(input: Input): Output {
+    const schedule = assignation(input).schedule
 
+    const output: Output = {
+        schedule,
+        metrics: []
+    };
 
     const totalTime: number = totalTimeCalc(output)
     const efficiency: number = (totalTimeAnalysisCalc(input) / totalTimeCalc(output)) * 100;
     const conflict: number = 0 // isFree() manage conflicts
 
+    output.metrics.push({totalTime: totalTime, efficiency: efficiency, conflicts: conflict})
+
+    return output
+}
