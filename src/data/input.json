@@ -11,11 +11,10 @@
     {
       "id": "S002",
       "type": "TISSUE",
-      "priority": "URGENT",
+      "priority": "STAT",
       "analysisTime": 45,
       "arrivalTime": "01:00",
       "patientId": "P133"
-
     },
     {
       "id": "S003",
@@ -24,7 +23,22 @@
       "analysisTime": 15,
       "arrivalTime": "09:00",
       "patientId": "P138"
-
+    },
+    {
+      "id": "S004",
+      "type": "BLOOD",
+      "priority": "ROUTINE",
+      "analysisTime": 30,
+      "arrivalTime": "08:00",
+      "patientId": "P131"
+    },
+    {
+      "id": "S005",
+      "type": "URINE",
+      "priority": "URGENT",
+      "analysisTime": 30,
+      "arrivalTime": "11:00",
+      "patientId": "P128"
     }
   ],
   "technicians": [
