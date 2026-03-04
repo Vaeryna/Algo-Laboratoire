@@ -69,6 +69,12 @@
       "name": "Analyseur Tissus A",
       "type": "TISSUE",
       "available": true
+    },
+    {
+      "id": "E003",
+      "name": "Analyseur Urine A",
+      "type": "URINE",
+      "available": true
     }
   ]
 }
