@@ -37,11 +37,11 @@ export function assignation(input: Input) {
 
     const samples: Sample[] = sortSamples(addEndTime(input.samples))
 
-    const technicians: Technician[] = input.technicians.map(tech => {
+    const techniciansArray: Technician[] = input.technicians.map(tech => {
         let program: Record<string, string> = createProgram(tech);
         return ({...tech, program})
     });
-    const equipment: Equipment[] = input.equipment.map(eq => {
+    const equipmentArray: Equipment[] = input.equipment.map(eq => {
         let program: Record<string, string> = createProgram(eq);
         return ({...eq, program})
     });
