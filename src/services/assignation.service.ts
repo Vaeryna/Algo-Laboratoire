@@ -2,9 +2,10 @@ import {Sample} from "../models/sample.interface";
 import {Technician} from "../models/technician.interface";
 import {Input} from "../models/input.models";
 import {Equipment} from "../models/equipment.interface";
-import {transformToMinutes} from "../utils/transformTime.utils";
-import {sortByPriority} from "../utils/sortBy.utils";
-import {booking, findAllTechAvailableBySpe} from "../utils/availability.utils";
+import {transformToHours, transformToMinutes} from "../utils/transformTime.utils";
+import {sortByPriority, sortByTechSpe, sortSampleByArrivalTime} from "../utils/sortBy.utils";
+import {booking, findAllEquipmmentWithSpe, findAllTechWithSpe, isFree, step} from "../utils/availability.utils";
+import {Output} from "../models/output.interface";
 
 
 function createProgram(userPlanning?: Technician | Equipment): Record<number, string> {
@@ -34,6 +35,14 @@ const addEndTime: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[
 
 
 export function assignation(input: Input) {
+    const output: Output = {
+        schedule: [],
+        metrics: {
+            totalTime: 0,
+            efficiency: 0,
+            conflicts: 0
+        }
+    };
 
     const samples: Sample[] = sortSamples(addEndTime(input.samples))
 
@@ -46,17 +55,50 @@ export function assignation(input: Input) {
         return ({...eq, program})
     });
 
-    // console.log("techos", technicians)
-    // console.log("machine", equipment)
-    // console.log("samples", samples)
+    for (const sample of samples) {
+        const technicians = sortByTechSpe(findAllTechWithSpe(techniciansArray, sample.type), sample.type)
+        const equipment = findAllEquipmmentWithSpe(equipmentArray, sample.type)
+
+        let placed = false
+
+        for (const tech of technicians) {
+            for (const eq of equipment) {
+                let start = transformToMinutes(sample.arrivalTime)
+                const slotNeeded = Math.ceil(sample.analysisTime / step)
+                const endDay = transformToMinutes("23:59")
+                let lastStart = endDay - sample.analysisTime;
 
 
+                if (!tech.program || !eq.program) continue
 
-    ;  //ajout statut à la volée
-    const equipment: Equipment[] = input.equipment;
+                while (start <= lastStart && !isFree(tech.program, start, sample.analysisTime) || !isFree(eq.program, start, sample.analysisTime)) {
+                    start += step
+                }
+                const end = start + slotNeeded * step
 
-console.log("techos", technicians)
+                booking(tech.program, start, sample.analysisTime, sample.id)
+                booking(eq.program, start, sample.analysisTime, sample.id)
 
 
+                output.schedule.push({
+                    sampleId: sample.id,
+                    technicianId: tech.id,
+                    equipmentId: eq.id,
+                    startTime: transformToHours(start),
+                    endTime: transformToHours(end),
+                    priority: sample.priority
+                })
 
+                placed = true
+                break
+            }
+            if (placed) break
+        }
+        console.log("placer", sample.id)
+        console.log("tech", technicians.map((t) => t.id))
+        console.log("machines", equipment.map(e => e.id))
+
+    }
+
+    console.log(output)
 }
