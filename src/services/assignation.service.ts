@@ -37,11 +37,7 @@ const addEndTime: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[
 export function assignation(input: Input) {
     const output: Output = {
         schedule: [],
-        metrics: {
-            totalTime: 0,
-            efficiency: 0,
-            conflicts: 0
-        }
+        metrics: []
     };
 
     const samples: Sample[] = sortSamples(addEndTime(input.samples))
