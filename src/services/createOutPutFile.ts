@@ -4,7 +4,7 @@ import {Metrics} from "../models/planning.interface";
 import {assignation} from "./assignation.service";
 
 
-function totalTimeCalc(input: Input): number {
+function totalTimeAnalysisCalc(input: Input): number {
     let result = 0
     let analysisTime: Array<Sample> = input.samples
 
