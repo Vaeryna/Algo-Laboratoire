@@ -9,8 +9,8 @@ export interface Output {
             "priority": string
         }[],
     "metrics": {
-        "totalTime": number,      // Une seule analyse de 30min
-        "efficiency": number,  // Ressources utilisées à 100%
-        "conflicts": number        // Aucun conflit
+        "totalTime": number,
+        "efficiency": number,
+        "conflicts": number
     }
 }
