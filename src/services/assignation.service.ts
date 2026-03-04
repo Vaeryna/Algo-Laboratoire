@@ -94,11 +94,6 @@ export function assignation(input: Input) {
             }
             if (placed) break
         }
-        console.log("placer", sample.id)
-        console.log("tech", technicians.map((t) => t.id))
-        console.log("machines", equipment.map(e => e.id))
-
     }
-
-    console.log(output)
+    return output
 }
