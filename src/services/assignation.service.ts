@@ -34,14 +34,22 @@ const addEndTime: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[
 
 
 export function assignation(input: Input) {
-//je recupere tout le fichier : samples et techniciens et machines
 
-    const samples: Sample[] = input.samples;
+    const samples: Sample[] = sortSamples(addEndTime(input.samples))
+
     const technicians: Technician[] = input.technicians.map(tech => {
-                let program = createProgram(tech);
-                return ({...tech, program})
-            }
-        )
+        let program: Record<string, string> = createProgram(tech);
+        return ({...tech, program})
+    });
+    const equipment: Equipment[] = input.equipment.map(eq => {
+        let program: Record<string, string> = createProgram(eq);
+        return ({...eq, program})
+    });
+
+    // console.log("techos", technicians)
+    // console.log("machine", equipment)
+    // console.log("samples", samples)
+
 
 
     ;  //ajout statut à la volée
