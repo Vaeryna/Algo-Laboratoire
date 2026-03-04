@@ -35,7 +35,7 @@ export function createPlanning(input: Input): Output {
     };
 
     const totalTime: number = totalTimeCalc(output)
-    const efficiency: number = (totalTimeAnalysisCalc(input) / totalTimeCalc(output)) * 100;
+    const efficiency: number = Math.trunc(((totalTimeAnalysisCalc(input) / totalTimeCalc(output)) * 100)*100)/100;
     const conflict: number = 0 // isFree() manage conflicts
 
     output.metrics.push({totalTime: totalTime, efficiency: efficiency, conflicts: conflict})
