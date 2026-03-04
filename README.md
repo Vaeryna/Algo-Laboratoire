@@ -20,7 +20,10 @@ L'application permet de récupérer une liste contenant les identifiants des éc
 ## Utilisation
 
 `npm start` permet d'utiliser l'application avec un jeu de données fantômes. 
+
 Pour utiliser vos propres données, il vous suffit d'ajouter votre fichier de données (format `json`) dans le dossier `/src/data` et de modifier le chemin de fichier de la variable `INPUT_PATH` dans le fichier  `/src/config.ts` 
+
+`npm start` créé un fichier `output.txt` au format texte dans le dossier `src/data`. Ce fichier contient le planning créé à l'aide de l'application.
 
 ## Evolutions futures
 
@@ -29,4 +32,4 @@ Actuellement, une vérification manuelle a été effectuée.
 Seront ajoutés :
 - des **tests unitaires** de chaque fonction
 - des **tests de non-regression** afin de s'assurer que l'ajout de fonctionnalité n'empêche pas le fonctionnement de l'application
-- la possibilité d'écrire les données ainsi créées dans un fichier sous un format choisi
+- la possibilité d'écrire les données ainsi créées dans un fichier sous un format choisi (pas seulement format texte)
