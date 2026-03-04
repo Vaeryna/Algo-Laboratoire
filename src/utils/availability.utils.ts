@@ -1,8 +1,9 @@
 import {Technician} from "../models/technician.interface";
+import {Equipment} from "../models/equipment.interface";
 
-const step = 15;
+export const step = 15;
 
-function isFree(planning: Record<number, string>, startHour: number, durationMinutes: number) {
+export function isFree(planning: Record<number, string>, startHour: number, durationMinutes: number) {
     const slotNeeded = Math.ceil(durationMinutes / step)
     const end = startHour + slotNeeded * step
 
@@ -13,14 +14,17 @@ function isFree(planning: Record<number, string>, startHour: number, durationMin
 }
 
 
-export function findAllTechAvailableBySpe(input: Technician[], spe: string, time: number, duration: number) {
-    return input.filter((tech: Technician) => tech.speciality === spe && tech.program == "ok" && isFree(tech.program, time, duration))
+export function findAllTechWithSpe(input: Technician[], spe: string) {
+    return input.filter((tech: Technician) => tech.speciality === spe || "GENERAL")
+}
+
+
+export function findAllEquipmmentWithSpe(input: Equipment[], spe: string) {
+    return input.filter((equipment: Equipment) => equipment.type === spe && equipment.available)
 }
 
 
 export function booking(program: Record<number, string>, startHour: number, durationMinutes: number, sampleID: string) {
-
-    while (!isFree(program, startHour, durationMinutes)) startHour += step
 
     const slotNeeded = Math.ceil(durationMinutes / step)
 
