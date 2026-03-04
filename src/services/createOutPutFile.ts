@@ -15,22 +15,20 @@ function totalTimeCalc(input: Input): number {
 }
 
 
-// if ( tech = dispo && machine = dispo) { schedule tech = tech, schedul machine = machine , schedule startTime = XX, schedule endtime = startTime+analysisTime
+function totalTimeCalc(output: Output): number {
+    const starts = output.schedule.map(st => transformToMinutes(st.startTime))
+    const ends = output.schedule.map(et => transformToMinutes(et.endTime))
 
-// export function createPlanning(schedule: Output) {
-export function createPlanning(input: Input): any {
-    const totalTime: number = totalTimeCalc(input)
-    const efficiency: number = 0;
-    const conflict: number = 0
+    const firstStart: number = Math.min(...starts)
+    const lastEnd: number = Math.max(...ends)
 
+    return lastEnd - firstStart;
+}
 
     assignation(input)
 
 
-    return {totalTime: totalTime, efficiency: efficiency, conflict: conflict}
-    // liste des schedule
-    // additionner les minutes de durées  --> total time des metrics
-    // calcul efficiency
-    // verif conflit
-}
+    const totalTime: number = totalTimeCalc(output)
+    const efficiency: number = (totalTimeAnalysisCalc(input) / totalTimeCalc(output)) * 100;
+    const conflict: number = 0 // isFree() manage conflicts
 
