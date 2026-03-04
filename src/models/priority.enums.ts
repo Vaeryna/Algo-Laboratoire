@@ -5,7 +5,7 @@ export enum Priority {
 }
 
 export const priorityOrder: Record<Priority, number> = {
-    [Priority.STAT]: 1,
-    [Priority.URGENT]: 0,
+    [Priority.STAT]: 0,
+    [Priority.URGENT]: 1,
     [Priority.ROUTINE]: 2
 }
