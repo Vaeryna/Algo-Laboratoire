@@ -25,7 +25,7 @@ function createProgram(userPlanning?: Technician | Equipment): Record<number, st
     return program
 }
 
-const sortSamples: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[] => sortByPriority(samples) || sortByPriority(samples);
+const sortSamples: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[] => sortByPriority(samples) || sortSampleByArrivalTime(samples);
 
 const addEndTime: (samples: Sample[]) => Sample[] = (samples: Sample[]): Sample[] => samples.map(sample => {
     let totalTime: number = transformToMinutes(sample.arrivalTime) + sample.analysisTime;
